@@ -1,68 +1,88 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-color: rgb(78, 74, 74);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.to-do-list {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  margin-top: 100px;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.h1 {
+  font-size: 4rem;
 }
 
 button {
+  font-size: 1.7rem;
+  font-weight: bold;
+  border: none;
+  color: white;
+  padding: 10px 20px;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background-color 0.5 ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.add-button {
+  background-color: rgb(3, 150, 3);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.add-button:hover {
+  background-color: rgb(86, 230, 86);
+}
+
+
+.delete-button {
+  background-color: rgb(252, 7, 7);
+}
+
+.delete-button:hover {
+  background-color: rgb(168, 103, 92);
+}
+
+.move-button {
+  background-color: rgb(7, 252, 252);
+}
+
+.move-button:hover {
+  background-color: rgb(92, 114, 133);
+}
+
+input[type="text"]{
+  font-size: 1.6rem;
+  padding: 10px;
+  border: 2px solid honeydew;
+  border-radius: 10px;
+  color: rgb(68, 54, 54);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+ol{
+  padding: 0;
+}
+
+li{
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 15px;
+  background-color: white;
+  margin-bottom: 10px;
+  border: 3px solid grey;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.text{
+  flex: 1;
+}
+
+
+.delete-button, .move-button{
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  margin-left: 10px;
 }
