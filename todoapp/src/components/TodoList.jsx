@@ -2,22 +2,42 @@ import React, { useState } from "react";
 
 const TodoList = () => {
   const [task, setTask] = useState([]);
-  const [addTask, SetAddTask] = useState("");
+  const [newTask, setAddNewTask] = useState("");
+  const [editIndex, setEditIndex] = useState(null);
+  const [edit, setEdit] = useState("");
 
   const inputChange = (e) => {
-    SetAddTask(e.target.value);
+    setAddNewTask(e.target.value);
   };
 
   const addTasks = () => {
-    if (addTask.trim() !== "") {
-      setTask((task) => [...task, addTask]);
-      SetAddTask("");
+    if (newTask.trim() != "") {
+      setTask((t) => [...t, newTask]);
+      setAddNewTask("");
     }
+  };
+
+  const editTask = (index) => {
+    setEditIndex(index);
+    setEdit(task[index]);
+  };
+
+  const saveTask = (index) => {
+    const updateTask = [...task];
+    updateTask[index] = edit;
+    setTask(updateTask);
+    setEditIndex(null);
+    setEdit("");
   };
 
   const deleteTasks = (index) => {
     const updateTask = task.filter((_, i) => i !== index);
     setTask(updateTask);
+  };
+
+  const cancelEdit = () => {
+    setEditIndex(null);
+    setEdit("");
   };
 
   const moveTaskUp = (index) => {
@@ -50,36 +70,63 @@ const TodoList = () => {
           <input
             type="text"
             placeholder="Enter a Task"
-            value={addTask}
+            value={newTask}
             onChange={inputChange}
           />
           <button className="add-button" onClick={addTasks}>
             Add Task
           </button>
-
           <ol>
             {task.map((item, index) => {
               return (
                 <li key={index}>
-                  <span>{item}</span>
-                  <button
-                    className="move-button"
-                    onClick={() => moveTaskUp(index)}
-                  >
-                    ⬆️
-                  </button>
-                  <button
-                    className="move-button"
-                    onClick={() => moveTaskDown(index)}
-                  >
-                    ⬇️
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={() => deleteTasks(index)}
-                  >
-                    ❎
-                  </button>
+                  {editIndex === index ? (
+                    <div>
+                      <input
+                        type="text"
+                        name="text"
+                        onChange={(e) => setEdit(e.target.value)}
+                        value={edit}
+                      />
+                      <button
+                        className="save-button"
+                        onClick={() => saveTask(index)}
+                      >
+                        ✅
+                      </button>
+                      <button className="cancel-button" onClick={cancelEdit}>
+                        ❎
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <span>{item}</span>
+                      <button
+                        className="edit-button"
+                        onClick={() => editTask(index)}
+                      >
+                        📝
+                      </button>
+                      <button
+                        className="move-button"
+                        onClick={() => moveTaskUp(index)}
+                      >
+                        ⬆️
+                      </button>
+                      <button
+                        className="move-button"
+                        onClick={() => moveTaskDown(index)}
+                      >
+                        ⬇️
+                      </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => deleteTasks(index)}
+                      >
+                        ❎
+                      </button>
+                    </div>
+                  )}
                 </li>
               );
             })}

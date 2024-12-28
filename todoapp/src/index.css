@@ -49,6 +49,26 @@ button {
   background-color: rgb(92, 114, 133);
 }
 
+.edit-button {
+  background-color: rgb(46, 36, 143);
+
+}
+
+.edit-button:hover {
+  background-color: rgb(95, 90, 134);
+}
+
+.cancel-button, .edit-button, .save-button {
+  background-color: rgb(7, 252, 252);
+}
+
+.cancel-button:hover, .edit-button:hover, .save-button:hover {
+  background-color: rgb(92, 114, 133);
+}
+
+
+
+
 input[type="text"]{
   font-size: 1.6rem;
   padding: 10px;
@@ -81,7 +101,7 @@ li{
 }
 
 
-.delete-button, .move-button{
+.delete-button, .move-button, .save-button, .cancel-button, .edit-button{
   padding: 8px 12px;
   font-size: 1.4rem;
   margin-left: 10px;
